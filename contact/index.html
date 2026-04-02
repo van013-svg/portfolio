@@ -1,22 +1,35 @@
-<h1>Contact</h1>
+<body>
 
-<form action="mailto:your-email@example.com" method="POST" enctype="text/plain">
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>                <!-- root index -->
+            <li><a href="../projects/index.html">Projects</a></li>   <!-- go up, then into projects -->
+            <li><a href="index.html">Contact</a></li>              <!-- same folder -->
+            <li><a href="../profile/index.html">Profile</a></li>    <!-- go up, then into profile -->
+        </ul>
+    </nav>
 
-    <label>
-        Email:
-        <input type="email" name="email" required>
-    </label><br><br>
+    <h1>Contact</h1>
 
-    <label>
-        Subject:
-        <input name="subject" required>
-    </label><br><br>
+    <form action="mailto:your-email@example.com" method="POST" enctype="text/plain">
 
-    <label>
-        Message:
-        <textarea name="body" rows="5" required></textarea>
-    </label><br><br>
+        <label>
+            Email:
+            <input type="email" name="email" required>
+        </label><br><br>
 
-    <button>Send</button>
+        <label>
+            Subject:
+            <input name="subject" required>
+        </label><br><br>
 
-</form>
+        <label>
+            Message:
+            <textarea name="body" rows="5" required></textarea>
+        </label><br><br>
+
+        <button>Send</button>
+
+    </form>
+
+</body>
