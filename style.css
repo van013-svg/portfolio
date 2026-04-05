@@ -56,3 +56,12 @@ form {
   display: grid;
   grid-template-columns: auto 1fr;
 }
+
+label {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;;
+  gap: 1 em;
+}
+
+
