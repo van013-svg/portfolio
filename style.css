@@ -61,7 +61,8 @@ form {
 label {
   display: grid;
   grid-template-columns: subgrid;
-  grid-column: 1 / -1;;
+  grid-column: 1 / -1;
+  gap: 1em;
 }
 
 .projects {
