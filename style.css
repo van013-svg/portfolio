@@ -8,3 +8,7 @@ body {
   padding-inline: 1em;
   padding-block: 1em;
 }
+
+nav ul, nav li {
+  display: contents;
+}
