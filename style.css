@@ -12,3 +12,22 @@ body {
 nav ul, nav li {
   display: contents;
 }
+
+nav {
+  display: flex;
+  margin-bottom: 1em;
+  border-bottom: 1px solid oklch(80% 3% 200);
+}
+
+nav a {
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  padding: 0.5em 0;
+}
+
+nav a.current {
+  border-bottom: 0.4em solid oklch(90% 3% 200);
+  padding-bottom: 0.1em;
+}
