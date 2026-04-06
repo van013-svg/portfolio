@@ -125,3 +125,8 @@ h6 {
   font-size: 1rem;
   font-weight: 400;
 }
+
+.projects-page h2 {
+  color: #2c3e50;          
+  text-transform: uppercase;
+}
