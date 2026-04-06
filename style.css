@@ -50,7 +50,9 @@ input,
 textarea,
 button {
   font: inherit;
-  border: 1px solid oklch(0% 0 0);
+  border: 1px solid oklch(80% 3% 200);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 form {
