@@ -49,7 +49,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 400%;
+  font-size: 200%;
 }
 
 h2 {
@@ -84,7 +84,6 @@ header p {
   color: oklch(50% 3% 200);
 }
 
-/* Resume job layout */
 .job-header {
   display: flex;
   justify-content: space-between;
