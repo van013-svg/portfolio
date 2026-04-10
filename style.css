@@ -1,7 +1,7 @@
 body {
   font: 100%/1.5 system-ui;
-  max-width: 70ch;
-  margin-inline: max(1em, (100% - 70ch) / 2);
+  max-width: 100ch;
+  margin-inline: max(1em, (100% - 100ch) / 2);
   padding: 2em 1em;
 }
 
