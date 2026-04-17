@@ -19,16 +19,15 @@ let pages = [
 let nav = document.createElement('nav');
 document.body.prepend(nav);
 
-let a = document.createElement('a');
-a.href = url;
-a.textContent = title;
-nav.append(a);
-
 for (let p of pages) {
   let url = p.url;
   let title = p.title;
 
   url = !url.startsWith('http') ? BASE_PATH + url : url;
 
-  nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
+  let a = document.createElement('a');
+  a.href = url;
+  a.textContent = title;
+
+  nav.append(a);
 }
