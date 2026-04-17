@@ -16,8 +16,10 @@ let pages = [
   { url: 'https://github.com/van013-svg', title: 'GitHub' }
 ];
 
-let nav = document.createElement('nav');
-document.body.prepend(nav);
+let a = document.createElement('a');
+a.href = url;
+a.textContent = title;
+nav.append(a);
 
 for (let p of pages) {
   let url = p.url;
