@@ -1,12 +1,12 @@
-:root {
-  color-scheme: light dark;
-}
-
 body {
   font: 100%/1.5 system-ui;
   max-width: 100ch;
   margin-inline: max(1em, (100% - 100ch) / 2);
   padding: 2em 1em;
+}
+
+html {
+  color-scheme: light dark;
 }
 
 :root {
