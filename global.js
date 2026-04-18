@@ -97,5 +97,4 @@ form?.addEventListener('submit', function (event) {
   let url = form.action + "?" + params.join("&");
 
   location.href = url; 
-  }
-});
+  });
