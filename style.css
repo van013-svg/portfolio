@@ -132,7 +132,8 @@ li {
 
 input,
 textarea,
-button {
+button,
+select {
   font: inherit;
   border: 1px solid oklch(80% 3% 200);
   width: 100%;
@@ -171,4 +172,11 @@ label {
 
 .projects article h2 {
   margin: 0;
+}
+
+label.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
 }
