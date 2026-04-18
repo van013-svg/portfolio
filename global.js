@@ -19,6 +19,20 @@ let pages = [
 let nav = document.createElement('nav');
 document.body.prepend(nav);
 
+document.body.insertAdjacentHTML(
+  'afterbegin',
+  `
+  <label class="color-scheme">
+    Theme:
+    <select>
+      <option value="automatic">Automatic</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+    </select>
+  </label>
+  `
+);
+
 for (let p of pages) {
   let url = p.url;
   let title = p.title;
