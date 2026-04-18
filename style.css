@@ -179,4 +179,8 @@ label.color-scheme {
   top: 1rem;
   right: 1rem;
   font-size: 80%;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
 }
