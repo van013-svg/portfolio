@@ -67,11 +67,15 @@ select.addEventListener('input', function (event) {
   document.documentElement.style.setProperty('color-scheme', event.target.value);
   
   localStorage.colorScheme = event.target.value;
-
-  setColorScheme(event.target.value);
-  
 });
 
 if ('colorScheme' in localStorage) {
-  setColorScheme(localStorage.colorScheme);
+  document.documentElement.style.setProperty(
+    'color-scheme',
+    localStorage.colorScheme === 'automatic'
+      ? 'light dark'
+      : localStorage.colorScheme
+  );
+
+  select.value = localStorage.colorScheme;
 }
