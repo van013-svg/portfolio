@@ -70,12 +70,13 @@ select.addEventListener('input', function (event) {
 });
 
 if ('colorScheme' in localStorage) {
-  document.documentElement.style.setProperty(
-    'color-scheme',
-    localStorage.colorScheme === 'automatic'
-      ? 'light dark'
-      : localStorage.colorScheme
-  );
+  let scheme = localStorage.colorScheme;
 
-  select.value = localStorage.colorScheme;
+  if (scheme === 'automatic') {
+    document.documentElement.style.setProperty('color-scheme', 'light dark');
+  } else {
+    document.documentElement.style.setProperty('color-scheme', scheme);
+  }
+
+  select.value = scheme;
 }
