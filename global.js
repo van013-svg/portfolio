@@ -71,11 +71,5 @@ select.addEventListener('input', function (event) {
   if ('colorScheme' in localStorage) {
   let scheme = localStorage.colorScheme;
 
-  document.documentElement.style.setProperty(
-    'color-scheme',
-    scheme === 'automatic' ? 'light dark' : scheme
-  );
-
-  select.value = scheme;
-}
+  select.value = scheme;}
 });
