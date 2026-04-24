@@ -196,14 +196,14 @@ label.color-scheme {
   margin: 0;
 }
 
-#profile-stats div {
+#profile-stats dl > div{
   display: flex;
   flex-direction: column;
 }
 
 #profile-stats dt {
   font-size: 11px;
-  color: #6e7781;
+  color: GrayText; 
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -214,6 +214,6 @@ label.color-scheme {
   font-size: 32px;
   font-weight: 300;
   margin: 0;
-  color: #1f2328;
+  color: CanvasText; 
   line-height: 1;
 }
