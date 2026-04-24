@@ -116,7 +116,7 @@ form?.addEventListener('submit', function (event) {
   }
 }
 
-export function renderProjects(project, containerElement, headingLevel = 'h2') {
+export function renderProjects(projects, containerElement, headingLevel = 'h2') {
   containerElement.innerHTML = '';
   
   projects.forEach(project => {
