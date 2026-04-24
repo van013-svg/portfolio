@@ -2,7 +2,7 @@
     {
         "title": "Project 1",
         "year": 2026,
-        "image": "/images/project 1.png",
+        "image": "../images/project 1.png",
         "description": "This visualization uses a grouped bar chart to compare average protein content across price deciles for three grocery stores (Walmart, Target, and Whole Foods). The item prices within each store were transformed into decile ranks (1-10), where 1 represents the lowest-priced items and 10 represents the highest-priced items."
     },
     {
