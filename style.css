@@ -185,6 +185,12 @@ label {
   margin: 0;
 }
 
+.projects article img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
 label.color-scheme {
   position: absolute;
   top: 1rem;
