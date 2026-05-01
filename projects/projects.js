@@ -7,7 +7,7 @@ let arc = arcGenerator({
   endAngle: 2 * Math.PI
 });
 
-d3.select('svg').append('path').attr('d', arc).attr('fill', 'red');
+d3.select('#projects-pie-plot').append('path').attr('d', arc).attr('fill', 'red');
 
 import { fetchJSON, renderProjects } from '../global.js';
 
