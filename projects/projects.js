@@ -42,9 +42,11 @@ for (let d of data) {
 
 let arcs = arcData.map((d) => arcGenerator(d));
 
-arcs.forEach((arc) => {
+let colors = ['gold', 'purple'];
+
+arcs.forEach((arc, idx) => {
   d3.select('#projects-pie-plot')
     .append('path')
     .attr('d', arc)
-    .attr('fill', 'red');
+    .attr('fill', colors[idx]);
 });
