@@ -232,3 +232,10 @@ label.color-scheme {
   font-size: 0.9rem;
   color: #666;
 }
+
+#projects-pie-plot {
+  max-width: 20em;
+  margin-block: 2em;
+
+  overflow: visible;
+}
