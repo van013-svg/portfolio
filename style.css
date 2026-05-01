@@ -234,8 +234,8 @@ label.color-scheme {
 }
 
 #projects-pie-plot {
-  width: 20em;
-  flex-shrink: 0;
+  width: 100%;
+  max-width: 20em;
   height: auto;
 }
 
@@ -262,6 +262,7 @@ label.color-scheme {
   align-items: center;
   gap: 0.3em;
   white-space: nowrap;
+  min-width: 0;
 }
 
 .swatch {
@@ -276,4 +277,5 @@ label.color-scheme {
   display: flex;
   align-items: center;
   gap: 2em;
+  flex-wrap: nowrap;
 }
