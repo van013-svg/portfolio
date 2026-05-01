@@ -8,6 +8,9 @@ const projectsContainer = document.querySelector('.projects');
 
 const titleEl = document.querySelector('.projects-title');
 
+let query = '';
+let selectedIndex = -1;
+
 if (titleEl) {
   titleEl.textContent = projects.length;
 }
@@ -36,29 +39,34 @@ function renderPieChart(projectsGiven) {
   let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
   let svg = d3.select('#projects-pie-plot');
-  svg.selectAll('path').remove();
 
   svg.selectAll('path')
     .data(arcData)
     .join('path')
     .attr('d', d => arcGenerator(d))
-    .attr('fill', (_, i) => colors(i));
+    .attr('fill', (_, i) => colors(i))
+    .attr('class', (_, i) =>
+      i === selectedIndex ? 'selected' : null
+    )
+    .on('click', (event, d) => {
+      const i = arcData.indexOf(d);
+      selectedIndex = selectedIndex === i ? -1 : i;
+      renderPieChart(projectsGiven);
+    });
 
   let legend = d3.select('.legend');
-  legend.selectAll('li').remove();
 
   legend.selectAll('li')
     .data(data)
     .join('li')
     .attr('style', (d, i) => `--color:${colors(i)}`)
+    .attr('class', (_, i) =>
+      i === selectedIndex ? 'selected' : null
+    )
     .html(d => `<span class="swatch"></span> ${d.label} (${d.value})`);
 }
 
 renderPieChart(projects);
-
-let query = '';
-let searchInput = document.querySelector('.searchBar');
-
 searchInput.addEventListener('input', (event) => {
   query = event.target.value;
 
@@ -70,5 +78,8 @@ searchInput.addEventListener('input', (event) => {
   );
 
   renderProjects(filteredProjects, projectsContainer, 'h2');
+  
+  selectedIndex = -1;
+  
   renderPieChart(filteredProjects);
 });
