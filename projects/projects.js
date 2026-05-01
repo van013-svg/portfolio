@@ -37,7 +37,7 @@ for (let d of data) {
 
 let arcs = arcData.map((d) => arcGenerator(d));
 
-let colors = ['gold', 'purple'];
+let colors = ['purple', 'gold'];
 
 arcs.forEach((arc, idx) => {
   d3.select('#projects-pie-plot')
