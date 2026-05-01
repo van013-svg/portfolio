@@ -50,5 +50,5 @@ arcData.forEach((d, idx) => {
     .attr('class', 'swatch');
 
   li.append('span')
-    .text(d.data.label);
+    .text(`${d.data.label} (${d.data.value})`);
 });
