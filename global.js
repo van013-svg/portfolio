@@ -132,10 +132,10 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
         </p>
 
         <p class="project-year">
-          ${project.year}
+          C. ${project.year}
         </p>
       </div>
-      
+
     `;
 
     containerElement.appendChild(article);
