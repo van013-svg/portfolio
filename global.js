@@ -132,7 +132,7 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
         </p>
 
         <p class="project-year">
-          C. ${project.year}
+          c. ${project.year}
         </p>
       </div>
 
