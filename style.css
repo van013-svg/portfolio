@@ -238,21 +238,18 @@ label.color-scheme {
   max-width: 100%;
   flex-shrink: 1;
   height: auto;
+  margin-bottom: 2em;
 }
 
 .legend {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(9em, max-content));
+  grid-template-columns: repeat(auto-fit, minmax(9em, 1fr));
   gap: 1em;
-
   padding: 1em;
   margin: 1em 0 2em;
-
   border: 1px solid #ccc;
   border-radius: 0.5em;
-
   list-style: none;
-
   flex-shrink: 0;  
 }
 
