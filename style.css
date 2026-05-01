@@ -234,15 +234,16 @@ label.color-scheme {
 }
 
 #projects-pie-plot {
-  max-width: 20em;
+  width: 20em;
+  height: auto;
+  flex-shrink: 0;
   margin-block: 2em;
-
   overflow: visible;
 }
 
 .legend {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
   gap: 1em;
   padding: 1em;
   margin: 1em 0 2em;
@@ -270,4 +271,5 @@ label.color-scheme {
   display: flex;
   align-items: center;
   gap: 2em;
+  flex-wrap: wrap;
 }
