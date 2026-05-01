@@ -225,3 +225,10 @@ label.color-scheme {
   color: var(--color-text);
   line-height: 1;
 }
+
+.project-year {
+  font-family: Baskerville, serif;
+  font-variant-numeric: oldstyle-nums;
+  font-size: 0.9rem;
+  color: #666;
+}
