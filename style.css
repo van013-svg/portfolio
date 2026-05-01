@@ -249,6 +249,7 @@ label.color-scheme {
   border: 1px solid #ccc;
   border-radius: 0.5em;
   list-style: none;
+  margin-bottom: 2em;
 }
 
 .legend li {
