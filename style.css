@@ -256,6 +256,7 @@ label.color-scheme {
   display: flex;
   align-items: center;
   gap: 0.3em;
+  white-space: nowrap;
 }
 
 .swatch {
