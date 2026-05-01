@@ -250,7 +250,7 @@ label.color-scheme {
   border: 1px solid #ccc;
   border-radius: 0.5em;
   list-style: none;
-  flex-shrink: 0;  
+  flex: 1;  
 }
 
 
@@ -272,6 +272,6 @@ label.color-scheme {
 
 .container {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 2em;
 }
