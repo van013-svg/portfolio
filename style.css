@@ -235,28 +235,33 @@ label.color-scheme {
 
 #projects-pie-plot {
   width: 20em;
-  height: auto;
   flex-shrink: 0;
-  margin-block: 2em;
-  overflow: visible;
+  height: auto;
 }
 
 .legend {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
   gap: 1em;
+
   padding: 1em;
   margin: 1em 0 2em;
+
   border: 1px solid #ccc;
   border-radius: 0.5em;
+
   list-style: none;
+
   flex: 1;
+  min-width: 0;
 }
+
 
 .legend li {
   display: flex;
   align-items: center;
   gap: 0.3em;
+  white-space: nowrap;
 }
 
 .swatch {
