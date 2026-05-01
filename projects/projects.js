@@ -33,21 +33,7 @@ let arcs = arcData.map((d) => arcGenerator(d));
 
 let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
-arcs.forEach((arc, idx) => {
-  d3.select('#projects-pie-plot')
-    .append('path')
-    .attr('d', arc)
-    .attr('fill', colors(idx));
-});
-
 let legend = d3.select('.legend');
-
-data.forEach((d, idx) => {
-  legend
-    .append('li')
-    .attr('style', `--color:${colors(idx)}`) // set the style attribute while passing in parameters
-    .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`); // set the inner html of <li>
-});
 
 data.forEach((d, idx) => {
   let li = legend.append('li')
