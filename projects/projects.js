@@ -44,9 +44,6 @@ function renderPieChart(projectsGiven) {
 
   const color = d3.scaleOrdinal(d3.schemeTableau10);
 
-  /* -------------------------
-     PIE
-  --------------------------*/
   svg.selectAll('path')
     .data(arcData)
     .join('path')
@@ -62,7 +59,6 @@ function renderPieChart(projectsGiven) {
 
       let filtered = filterProjects();
 
-      // APPLY YEAR FILTER
       if (selectedIndex !== -1) {
         const selectedYear = data[selectedIndex].label;
         filtered = filtered.filter(p => p.year === selectedYear);
@@ -70,7 +66,6 @@ function renderPieChart(projectsGiven) {
 
       renderProjects(filtered, projectsContainer, 'h2');
 
-      // update visuals only (NO re-render)
       svg.selectAll('path')
         .attr('class', (_, idx) =>
           idx === selectedIndex ? 'selected' : null
@@ -82,9 +77,6 @@ function renderPieChart(projectsGiven) {
         );
     });
 
-  /* -------------------------
-     LEGEND
-  --------------------------*/
   legend.selectAll('li')
     .data(data)
     .join('li')
@@ -95,19 +87,14 @@ function renderPieChart(projectsGiven) {
     .html(d => `<span class="swatch"></span> ${d.label} (${d.value})`);
 }
 
-/* -------------------------
-   INITIAL RENDER
---------------------------*/
+
 renderProjects(projects, projectsContainer, 'h2');
 renderPieChart(projects);
 
-/* -------------------------
-   SEARCH
---------------------------*/
 searchInput.addEventListener('input', (event) => {
   query = event.target.value.toLowerCase();
 
-  selectedIndex = -1; // reset pie selection on new search
+  selectedIndex = -1; 
 
   const filtered = filterProjects();
 
