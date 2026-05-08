@@ -431,3 +431,33 @@ circle.selected {
   fill: #ff6b6b;
 }
 
+#language-breakdown {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+#language-breakdown dl {
+  gap: 1rem;
+  margin: 0;
+}
+
+#language-breakdown dt {
+  grid-row: 1;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+#language-breakdown dd {
+  grid-row: 2;
+  font-weight: 300;
+  margin: 0;
+  color: var(--color-text);
+  line-height: 1;
+  white-space: normal;
+  max-width: 10ch;
+  
+  
+}
