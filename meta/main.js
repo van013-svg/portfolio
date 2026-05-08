@@ -110,6 +110,10 @@ function updateTooltipPosition(event) {
   tooltip.style.top = `${event.clientY}px`;
 }
 
+function createBrushSelector(svg) {
+  svg.call(d3.brush());
+}
+
 function renderScatterPlot(data, commits) {
   const width = 1000;
   const height = 600;
@@ -128,6 +132,8 @@ function renderScatterPlot(data, commits) {
   const svg = d3.select("#chart")
     .append("svg")
     .attr("viewBox", `0 0 ${width} ${height}`);
+
+    createBrushSelector(svg);
 
   const xScale = d3.scaleTime()
     .domain(d3.extent(commits, d => d.datetime))
