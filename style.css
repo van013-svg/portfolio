@@ -211,7 +211,7 @@ label.color-scheme {
 #profile-stats dt {
   grid-row: 1;
   font-size: 11px;
-  color: var(--color-text-secondary);
+  color: color-mix(in oklch, currentColor 40%, transparent);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -302,12 +302,114 @@ path {
   }
 }
 
+dl.info {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25em 0.75em;
+  margin: 0;
+}
+
+dl.info dt {
+  color: oklch(50% 5% 200);
+  font-size: 0.8em;
+}
+
+dl.info dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+.tooltip {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  background: canvas;
+  padding: 0.75em 1em;
+  border: 1px solid oklch(80% 3% 200);
+  border-radius: 0.5em;
+  box-shadow: 0 2px 10px oklch(0% 0% 0% / 15%);
+}
+
 .gridlines line {
-  stroke: currentColor;
-  stroke-opacity: 0.1;
-  shape-rendering: crispEdges;
+  stroke: oklch(80% 3% 200 / 40%);
+  stroke-width: 1;
 }
 
 .gridlines path {
   display: none;
 }
+
+
+circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+circle:hover {
+  transform: scale(1.5);
+}
+
+.tooltip {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+
+  background: rgba(255, 255, 255, 0.85);
+  color: inherit;
+
+  padding: 0.75em 1em;
+  border-radius: 8px;
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+
+  backdrop-filter: blur(6px);
+
+  font-size: 0.9rem;
+
+  pointer-events: none; 
+
+  z-index: 1000;
+}
+
+dl.info {
+  /* ... other styles ... */
+  transition-duration: 500ms;
+  transition-property: opacity, visibility;
+}
+
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#stats {
+  font-family: 'Inter', -apple-system, sans-serif;
+  padding: 1rem 0;
+}
+
+#stats dl {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+  margin: 0;
+}
+
+#stats dt {
+  grid-row: 1;
+  font-size: 11px;
+  color: color-mix(in oklch, currentColor 40%, transparent);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+#stats dd {
+  grid-row: 2;
+  font-size: 32px;
+  font-weight: 300;
+  margin: 0;
+  color: var(--color-text);
+  line-height: 1;
+}
+
