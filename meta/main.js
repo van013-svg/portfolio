@@ -19,7 +19,7 @@ async function loadData() {
 function processCommits(data) {
   return d3.groups(data, d => d.commit).map(([commit, lines]) => {
     let first = lines[0];
-    let dt = new Date(first.datetime);
+    let dt = first.datetime;
 
     return {
       id: commit,
@@ -158,7 +158,7 @@ function renderScatterPlot(data, commits) {
   const xAxis = d3.axisBottom(xScale);
 
   const yAxis = d3.axisLeft(yScale)
-    .tickFormat(d => String(d).padStart(2, "0") + ":00");
+  .tickFormat(d => String(d).padStart(2, "0") + ":00");
 
   svg.append("g")
     .attr("transform", `translate(0,${usableArea.bottom})`)
@@ -181,8 +181,8 @@ function renderScatterPlot(data, commits) {
   .scaleSqrt() // Change only this line
   .domain([minLines, maxLines])
   .range([5, 15]);
-
-  dots
+    
+  dots  
   .selectAll('circle')
   .data(sortedCommits)
   .join('circle')

@@ -458,6 +458,8 @@ circle.selected {
   line-height: 1;
   white-space: normal;
   max-width: 10ch;
-  
-  
+}
+
+svg {
+  overflow: visible;
 }
