@@ -57,7 +57,7 @@ h1 {
 
 h2 {
   font-size: 1.4rem;
-  margin-top: 2em;
+  margin: 1em 0 0.5em;
   border-bottom: 1px solid oklch(80% 3% 200);
   padding-bottom: 0.2em;
 }
@@ -300,4 +300,14 @@ path {
   &:is(path) {
     fill: var(--color);
   }
+}
+
+.gridlines line {
+  stroke: currentColor;
+  stroke-opacity: 0.1;
+  shape-rendering: crispEdges;
+}
+
+.gridlines path {
+  display: none;
 }
