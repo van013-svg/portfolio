@@ -1,5 +1,8 @@
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 
+let xScale;
+let yScale;
+
 async function loadData() {
   const data = await d3.csv("loc.csv", (row) => ({
     ...row,
@@ -110,10 +113,6 @@ function updateTooltipPosition(event) {
   tooltip.style.top = `${event.clientY}px`;
 }
 
-function createBrushSelector(svg) {
-  svg.call(d3.brush());
-}
-
 function renderScatterPlot(data, commits) {
   const width = 1000;
   const height = 600;
@@ -133,14 +132,15 @@ function renderScatterPlot(data, commits) {
     .append("svg")
     .attr("viewBox", `0 0 ${width} ${height}`);
 
-    createBrushSelector(svg);
+    svg.call(d3.brush().on('start brush end', brushed));
+    svg.selectAll('.dots, .overlay ~ *').raise();
 
-  const xScale = d3.scaleTime()
+   xScale = d3.scaleTime()
     .domain(d3.extent(commits, d => d.datetime))
     .range([usableArea.left, usableArea.right])
     .nice();
 
-  const yScale = d3.scaleLinear()
+   yScale = d3.scaleLinear()
     .domain([0, 24])
     .range([usableArea.bottom, usableArea.top]);
 
@@ -187,7 +187,6 @@ function renderScatterPlot(data, commits) {
   .join('circle')
   .attr('cx', (d) => xScale(d.datetime))
   .attr('cy', (d) => yScale(d.hourFrac))
-  .attr('r', 5)
   .attr('fill', d => colorScale(d.hourFrac)) 
   .attr('r', (d) => rScale(d.totalLines))
   .style('fill-opacity', 0.7) // Add transparency for overlapping dots
@@ -199,6 +198,46 @@ function renderScatterPlot(data, commits) {
   .on('mouseleave', () => {
     updateTooltipVisibility(false);
   });
+}
+
+function renderSelectionCount(selection) {
+  const selectedCommits = selection
+    ? commits.filter((d) => isCommitSelected(selection, d))
+    : [];
+
+  const countElement = document.querySelector('#selection-count');
+
+  if (!countElement) return selectedCommits;
+
+  countElement.textContent = selectedCommits.length
+    ? `${selectedCommits.length} commits selected`
+    : 'No commits selected';
+
+  return selectedCommits;
+}
+
+function brushed(event) {
+  const selection = event.selection;
+
+  d3.selectAll('.dots circle').classed('selected', (d) =>
+    isCommitSelected(selection, d),
+  );
+
+  renderSelectionCount(selection);
+}
+
+function isCommitSelected(selection, commit) {
+  if (!selection) {
+    return false;
+  }
+
+  const [x0, x1] = selection.map((d) => d[0]);
+  const [y0, y1] = selection.map((d) => d[1]);
+
+  const x = xScale(commit.datetime);
+  const y = yScale(commit.hourFrac);
+
+  return x >= x0 && x <= x1 && y >= y0 && y <= y1;
 }
 
 let data = await loadData();
