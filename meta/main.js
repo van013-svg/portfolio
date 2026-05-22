@@ -282,30 +282,38 @@ let timeScale = d3.scaleTime()
 let commitMaxTime = timeScale.invert(commitProgress);
 
 function updateFileDisplay(filteredCommits) {
-    let lines = filteredCommits.flatMap((d) => d.lines);
-    let files = d3
-      .groups(lines, (d) => d.file)
-      .map(([name, lines]) => {
-        return { name, lines };
-      });
+  let lines = filteredCommits.flatMap(d => d.lines);
 
-    let filesContainer = d3
+  let files = d3.groups(lines, d => d.file)
+    .map(([name, lines]) => ({ name, lines }));
+
+  let filesContainer = d3
     .select('#files')
     .selectAll('div')
-    .data(files, (d) => d.name)
+    .data(files, d => d.name)
     .join(
-      // This code only runs when the div is initially rendered
-      (enter) =>
-        enter.append('div').call((div) => {
+      enter =>
+        enter.append('div').call(div => {
           div.append('dt').append('code');
           div.append('dd');
-        }),
+        })
     );
 
-    // This code updates the div info
-    filesContainer.select('dt > code').text((d) => d.name);
-    filesContainer.select('dd').text((d) => `${d.lines.length} lines`);
-  } 
+  filesContainer
+  .select('dt')
+  .html(d => `
+    <code>${d.name}</code>
+    <small>${d.lines.length} lines</small>
+  `);
+
+  // unit visualization (IMPORTANT FIX)
+  filesContainer
+    .select('dd')
+    .selectAll('div')
+    .data(d => d.lines)
+    .join('div')
+    .attr('class', 'loc');
+}
 
 function onTimeSliderChange() {
   const slider = document.getElementById("commit-progress");
