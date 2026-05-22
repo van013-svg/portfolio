@@ -463,3 +463,25 @@ circle.selected {
 svg {
   overflow: visible;
 }
+
+#commit-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+#commit-controls label {
+  white-space: nowrap;
+}
+
+#commit-progress {
+  flex: 1;
+  min-width: 0;
+}
+
+#commit-time {
+  flex-basis: 100%;
+  text-align: right;
+  white-space: nowrap;
+}
