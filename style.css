@@ -339,17 +339,6 @@ dl.info dd {
   display: none;
 }
 
-
-circle {
-  transition: 200ms;
-  transform-origin: center;
-  transform-box: fill-box;
-}
-
-circle:hover {
-  transform: scale(1.5);
-}
-
 .tooltip {
   position: fixed;
   top: 1em;
@@ -484,4 +473,43 @@ svg {
   flex-basis: 100%;
   text-align: right;
   white-space: nowrap;
+}
+
+#commit-progress {
+  accent-color: steelblue;
+}
+
+circle {
+  transition: all 200ms, r calc(var(--r) * 10ms);
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+circle:hover {
+  transform: scale(1.5);
+}
+
+circle {
+  @starting-style {
+    r: 0;
+  }
+}
+
+#files {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+
+  > div {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+  }
+
+  dt {
+    grid-column: 1;
+  }
+
+  dd {
+    grid-column: 2;
+  }
 }
