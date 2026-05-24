@@ -3,55 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Meta</title>
 
   <link rel="stylesheet" href="../style.css">
 
   <script type="module" src="../global.js"></script>
-  <script type="module" src="main.js"></script>
+  <script type="module" src="meta.js"></script>
 </head>
 
 <body>
+
   <h1>Meta</h1>
 
   <p>
     This page includes stats about the code of this website.
   </p>
 
-  <h2>Summary</h2>
-
-  <div id="commit-controls">
-    <label>Show commits until:</label>
-    <input type="range" min="0" max="100" value="100" id="commit-progress" />
-    <time id="commit-time"></time>
-  </div>
-
-  <dl id="files">
-    <!-- we want the following structure for each file:
-    <div>
-      <dt>
-        <code>{file.name}</code>
-     </dt>
-      <dd>{file.lines.length} lines</dd>
-    </div>
-    -->
-  </dl>
-
   <div id="stats"></div>
 
-  <h2>Commits by time of day</h2>
+  <h2 class="no-underline">Evolution Over Time</h2>
 
-  <div id="chart"></div>
+  <div id="scrolly-1">
+    <div id="left-col">
+      <div id="scatter-story"></div>
+    </div>
 
-  <p id="selection-count">
-    No commits selected
-  </p>
+    <div id="right-col">
+      <div id="scatter-plot">
+        <header class="plot-header">
+          <h2 class="no-underline">
+            Commits by time of day
+          </h2>
+        </header>
+        <div id="chart"></div>
+        <p id="selection-count">
+          No commits selected
+        </p>
+        <dl id="language-breakdown" class="stats"></dl>
+      </div>
+    </div>
+  </div>
 
-  <dl id="language-breakdown" class="stats"></dl>
+  <div id="file-scrolly">
+    <div id="left">
+      <div id="file-plot">
+      <h2 class="no-underline">Codebase Evolution</h2>
+      <dl id="files"></dl>
+    </div>
+  </div>
 
+    <div id="right">
+      <div id="file-story"></div>
+    </div>
+  </div>
+
+  <!-- TOOLTIP -->
   <dl id="commit-tooltip" class="info tooltip" hidden>
-    <dt>Commit</dt>
 
+    <dt>Commit</dt>
     <dd>
       <a href="" id="commit-link" target="_blank"></a>
     </dd>
@@ -60,13 +70,14 @@
     <dd id="commit-date"></dd>
 
     <dt>Time</dt>
-    <dd id="tooltip-time"></dd>
+    <dd id="commit-time"></dd>
 
     <dt>Author</dt>
     <dd id="commit-author"></dd>
 
     <dt>Lines Edited</dt>
     <dd id="commit-lines"></dd>
+
   </dl>
 </body>
 </html>
