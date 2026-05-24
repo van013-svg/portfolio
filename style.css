@@ -497,6 +497,7 @@ circle {
   grid-template-columns: 1fr 4fr;
   position: sticky;
   column-gap: 1rem;
+  row-gap: 1.5rem;
 
   > div {
     grid-column: 1 / -1;
@@ -614,6 +615,20 @@ h2.no-underline {
   position: sticky;
   top: 1rem;
   height: fit-content;
+}
+
+#files > div {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+
+  transition:
+    transform 800ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 500ms ease;
+
+  padding-block: 0.6rem;
+
+  will-change: transform;
 }
 
 

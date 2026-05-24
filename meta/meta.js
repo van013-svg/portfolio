@@ -296,16 +296,9 @@ function renderSelectionCount(selected) {
   label.textContent = `${selected.length} commits selected`;
 }
 
-/* ---------------- FILE VISUALIZATION ---------------- */
-
 function updateFileDisplay(filteredCommits) {
 
-  // SAVE OLD POSITIONS
-  const oldPositions = new Map();
-
-  d3.selectAll('#files > div').each(function(d) {
-    oldPositions.set(d.name, this.getBoundingClientRect().top);
-  });
+  const container = d3.select('#files');
 
   let lines = filteredCommits.flatMap(d => d.lines);
 
@@ -313,20 +306,26 @@ function updateFileDisplay(filteredCommits) {
     .map(([name, lines]) => ({ name, lines }))
     .sort((a, b) => b.lines.length - a.lines.length);
 
-  let container = d3.select('#files');
+  const oldPositions = new Map();
+
+  container.selectAll('div.file-row').each(function(d) {
+    oldPositions.set(d.name, this.getBoundingClientRect().top);
+  });
 
   let fileDivs = container
-    .selectAll('div')
+    .selectAll('div.file-row')
     .data(files, d => d.name)
     .join(
       enter => {
-        let div = enter.append('div');
+        const div = enter.append('div')
+          .attr('class', 'file-row')
+          .style('opacity', 1);
+
         div.append('dt').append('code');
         div.append('dd');
+
         return div;
-      },
-      update => update,
-      exit => exit.remove()
+      }
     );
 
   fileDivs.select('dt > code')
@@ -342,7 +341,7 @@ function updateFileDisplay(filteredCommits) {
 
   fileDivs.select('dd')
     .selectAll('div.loc')
-    .data(d => d.lines)
+    .data(d => d.lines, d => d.line)
     .join(
       enter => enter.append('div').attr('class', 'loc'),
       update => update,
@@ -350,22 +349,27 @@ function updateFileDisplay(filteredCommits) {
     )
     .style('--color', d => colors(d.type));
 
-  // ANIMATE FILE MOVEMENT
-  d3.selectAll('#files > div').each(function(d) {
+  requestAnimationFrame(() => {
 
-    const newTop = this.getBoundingClientRect().top;
-    const oldTop = oldPositions.get(d.name);
+    container.selectAll('div.file-row').each(function(d) {
+      const oldTop = oldPositions.get(d.name);
+      if (oldTop == null) return;
 
-    if (oldTop !== undefined) {
-
+      const newTop = this.getBoundingClientRect().top;
       const delta = oldTop - newTop;
 
-      d3.select(this)
-        .style('transform', `translateY(${delta}px)`)
-        .transition()
-        .duration(500)
+      const el = d3.select(this);
+
+      el.interrupt();
+
+      el.style('transform', `translateY(${delta}px)`);
+
+      el.transition()
+        .duration(1000)
+        .ease(d3.easeCubicOut)
         .style('transform', 'translateY(0px)');
-    }
+    });
+
   });
 }
 
@@ -375,8 +379,6 @@ let commits = processCommits(data);
 renderCommitInfo(data, commits);
 renderScatterPlot(data, commits);
 updateFileDisplay(commits);
-
-/* ---------------- SCATTER STORY ---------------- */
 
 d3.select('#scatter-story')
   .selectAll('.step')
@@ -424,8 +426,6 @@ scroller
     step: '#scrolly-1 .step',
   })
   .onStepEnter(onStepEnter);
-
-/* ---------------- FILE STORY ---------------- */
 
 d3.select('#file-story')
   .selectAll('.step')
